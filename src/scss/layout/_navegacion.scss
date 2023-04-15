@@ -1,0 +1,93 @@
+.derecha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+        align-items: flex-end;
+    }
+}
+
+.dark-mode-boton {
+    width: 3rem;
+    margin:3rem 0 ;
+    filter: invert(100%);
+
+    &:hover {
+        cursor: pointer;
+    }
+    @include tablet  {
+       margin: 2rem 0;
+    }
+}
+
+.barra {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    align-items: center;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+.logo {
+    width:30rem;
+}
+
+.navegacion {
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .3s ease-in-out, opacity 0.5s linear, height .5s linear;
+    height: 0;
+
+    a {
+        color: $blanco;
+        text-decoration: none;
+        font-size: 1.8rem;
+        display: block;
+        text-align: center;
+        &:hover {
+            color: $verde;
+        }
+    }
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        height: auto;       
+        opacity: 1;
+        visibility: visible;
+        gap: 2rem;
+        div {
+            display: flex;         
+            align-items: center;
+            gap: 2rem;
+        }
+        .login {
+            display: flex;            
+            align-items: center;
+            gap: 2rem;
+        }
+    }
+}
+
+.mostrar {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+
+/** Menu de hamburgesa **/
+
+.mobile-menu {
+    @include tablet {
+        display: none;
+    }
+    img {
+        width: 5rem;
+    }
+}

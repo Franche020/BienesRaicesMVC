@@ -1,0 +1,19 @@
+{
+    "name": "fran/bienesraices_inicio",
+    "description": "Creando un proyecto con programacion orientada a objetos",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Franche020",
+            "email": "64061827+Franche020@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload":{
+        "psr-4": {
+            "App\\" : "./classes/"
+        }
+    }
+}
