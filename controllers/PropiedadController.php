@@ -5,6 +5,7 @@ use MVC\Router;
 use Model\Propiedad;
 use Model\Vendedor;
 use Intervention\Image\ImageManagerStatic as Image;
+use Model\ActiveRecord;
 
 class PropiedadController  {
 
@@ -15,7 +16,6 @@ class PropiedadController  {
 
         // Accede a la base de datos y escribe los datos en la variable
         $propiedades = Propiedad::all();
-        $resultado = null;
 
         /* Hace  una llamada a la función del router de render pasándole tanto la ruta de la pagina que va a renderizar, como los
         datos que se van a incluir y en este caso la variable propiedades con la key propiedades */
@@ -82,8 +82,50 @@ class PropiedadController  {
         ]);
     }
 
-    public static function actualizar() {
-        echo "Propiedad actualizar";
+    public static function actualizar(Router $router) {
+        $id = validarORedireccionar('/admin');
+
+        $propiedad = Propiedad::find($id);
+        $errores = Propiedad::getErrores();
+        $vendedores = Vendedor::all();
+
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            // Asignar los atributos
+            $args = $_POST['propiedad'];   
+            $propiedad->sincronizar($args);
+
+            // Validación
+            $errores = $propiedad->validar();
+
+            // Subida de archivos
+            // Generar un nombre único
+            $nombreImagen = md5(uniqid(rand(),true)) . ".jpg";
+            // Realiza un resize a la image con intervention
+            $imagen = '';
+            if ($_FILES['propiedad']['tmp_name']['imagen']){
+                $imagen = Image::make($_FILES['propiedad']['tmp_name']['imagen'])->fit(800,600);
+                $propiedad->setImagen($nombreImagen);
+            }
+            
+
+            // Revisar si el array de errores esté vacío
+            if(empty($errores)) {
+                // Almacenar la imagen
+                if ($_FILES['propiedad']['tmp_name']['imagen']){
+                    $imagen->save(CARPETA_IMAGENES.$nombreImagen);
+                }
+
+                // Insertar en la base de datos
+                $resultado = $propiedad->guardar();
+            }    
+        }
+        $router->render('/propiedades/actualizar', [
+            'propiedad' => $propiedad,
+            'errores' => $errores,
+            'vendedores' => $vendedores
+        ]);
+        
     }
 
 }

@@ -1,5 +1,5 @@
 <main class="contenedor seccion">
-    <h1>Crear Propiedad</h1>
+    <h1>Actualizar Propiedad</h1>
 
     <a class="boton-verde" href="/admin">Volver</a>
     
@@ -11,6 +11,6 @@
         <?php endforeach; ?>
     <form class="formulario" method="POST" enctype="multipart/form-data">
         <?php include __DIR__ . "/formulario.php"; ?>
-        <input type="submit" value="Crear Propiedad" class="boton-verde">
+        <input type="submit" value="Actualizar Propiedad" class="boton-amarillo">
     </form>
 </main>

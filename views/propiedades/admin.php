@@ -3,6 +3,7 @@
     <h1>Administrador de bienes raíces</h1>
 
     <?php 
+
     if($resultado){
         $mensaje = mostrarNotificacion(intval($resultado));
         if($mensaje) { ?> 
@@ -43,7 +44,7 @@
                             <input type="hidden" name="tipo" value="propiedad">
                             <input type="submit" class="boton-rojo-block eliminar-propiedad" value="Eliminar" id="<?php echo "submit". $propiedad->id?>">
                         </form>
-                        <a href="/admin/propiedades/actualizar.php?id=<?php echo $propiedad->id ?>" class="boton-amarillo-block">Actualizar</a>
+                        <a href="/propiedades/actualizar?id=<?php echo $propiedad->id ?>" class="boton-amarillo-block">Actualizar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
