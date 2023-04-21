@@ -128,4 +128,20 @@ class PropiedadController  {
         
     }
 
+    public static function eliminar () {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Esto obtiene la ID del POST y la valida como INT para evitar inyecciones de código
+            $id = $_POST ['id'] ??'';
+            $id = filter_var($id , FILTER_VALIDATE_INT);
+        
+            if ( $id ) {
+                if ( validarTipoDato($_POST['tipo']) ){
+                    $propiedad = Propiedad::find($id);
+                    $propiedad->eliminar();
+
+                }
+            }
+        } 
+    }
 }

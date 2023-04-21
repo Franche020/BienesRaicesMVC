@@ -39,7 +39,7 @@
                     <td><div><img class="imagen-tabla" src="/imagenes/<?php echo $propiedad->imagen; ?>" alt="<?php echo($propiedad->imagen==='null')? "Imagen Propiedad" : "Imagen no disponible";  ?>"></div></td>
                     <td><?php echo $propiedad->precio . "$" ?></td>
                     <td>
-                        <form method="POST" class="w-100" id="<?php echo "form". $propiedad->id?>">
+                        <form method="POST" class="w-100" id="<?php echo "form". $propiedad->id?>" action="/propiedades/eliminar">
                             <input type="hidden" name="id" value="<?php echo $propiedad->id?>">
                             <input type="hidden" name="tipo" value="propiedad">
                             <input type="submit" class="boton-rojo-block eliminar-propiedad" value="Eliminar" id="<?php echo "submit". $propiedad->id?>">
