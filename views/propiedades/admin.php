@@ -15,7 +15,7 @@
     
 
     <a class="boton-verde" href ="/propiedades/crear">Nueva Propiedad</a>
-    <a class="boton-amarillo" href ="/admin/vendedores/crear.php">Nuevo Vendedor</a>
+    <a class="boton-amarillo" href ="/vendedores/crear">Nuevo Vendedor</a>
 
     <h2>Propiedades</h2>
 
@@ -52,4 +52,36 @@
     </table>
 
     <h2>Vendedores</h2>
+
+    <table class="propiedades">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Telefono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+    <!-- Mostrar los resultados -->
+            <tbody> 
+
+            <?php foreach($vendedores as $vendedor): ?>
+                <tr>
+                    <td><?php echo $vendedor->id;?></td>
+                    <td><?php echo $vendedor->nombre; ?></td>
+                    <td><?php echo $vendedor->apellido;?></td>
+                    <td><?php echo $vendedor->telefono;?></td>
+                    <td>
+                        <form method="POST" class="w-100" id="<?php echo "form". $vendedor->id?>" action="/vendedores/eliminar">
+                            <input type="hidden" name="id" value="<?php echo  $vendedor->id?>">
+                            <input type="hidden" name="tipo" value="vendedor">
+                            <input type="submit" class="boton-rojo-block eliminar-vendedor" value="Eliminar" id="<?php echo "submit". $vendedor->id?>">
+                        </form>
+                        <a href="vendedores/actualizar?id=<?php echo $vendedor->id ?>" class="boton-amarillo-block">Actualizar</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+    </table>
 </main>

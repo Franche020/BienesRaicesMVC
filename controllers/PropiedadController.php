@@ -16,12 +16,15 @@ class PropiedadController  {
 
         // Accede a la base de datos y escribe los datos en la variable
         $propiedades = Propiedad::all();
+        $vendedores = Vendedor::all();
+
 
         /* Hace  una llamada a la función del router de render pasándole tanto la ruta de la pagina que va a renderizar, como los
         datos que se van a incluir y en este caso la variable propiedades con la key propiedades */
         $router->render("propiedades/admin", [
             'propiedades' => $propiedades,
-            'resultado' => $resultado
+            'resultado' => $resultado,
+            'vendedores' => $vendedores
         ]);
     }
 
