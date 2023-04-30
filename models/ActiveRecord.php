@@ -52,10 +52,12 @@ class ActiveRecord {
     {
         if (!is_null($this->id)) {
             // Actualizar
-            $this->actualizar();
+            $resultado = $this->actualizar();
+            return $resultado;
         } else {
             // Crear un nuevo registro
-            $this->crear();
+            $resultado = $this->crear();
+            return $resultado;
         }
     }
 
@@ -73,11 +75,7 @@ class ActiveRecord {
 
         // Insertar en la base de datos
         $resultado = self::$db->query($query);
-
-        if ($resultado) {
-            // Redireccionar al usuario.
-            header('location: /admin?resultado=1');
-        }
+        return $resultado;
     }
 
     protected function actualizar()
@@ -97,13 +95,11 @@ class ActiveRecord {
         $query .= self::$db->escape_string($this->id);
         $query .= " LIMIT 1;";
 
+
         // Insertar en la base de datos
         $resultado = self::$db->query($query);
 
-        if ($resultado) {
-            // Redireccionar al usuario.
-            header('location: /admin?resultado=2');
-        }
+        return $resultado;
     }
 
 
@@ -148,9 +144,9 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         // Si el query es correcto redirecciono
         if ($resultado) {
-            header('location: /admin?resultado=3');
             $this->borrarImagen();
         }
+        return $resultado;
     }
 
 

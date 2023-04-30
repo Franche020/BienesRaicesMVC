@@ -35,7 +35,7 @@ function s ($html) :string{
 // Validar el tipo de datos
 
 function validarTipoDato ($tipo) {
-    $tipos = ['propiedad', 'vendedor'];
+    $tipos = ['propiedad', 'vendedor',''];
 
     return in_array($tipo , $tipos);
 }
@@ -68,4 +68,16 @@ function validarORedireccionar (string $url) {
         header("Location: {$url}");
     }
     return $id;
+}
+
+function extraerPorId (string $id, $objetos) {
+    foreach ($objetos as $objeto) {
+        if ($objeto->id === $id){
+            return $objeto;
+        }
+    }
+}
+function obtenerNombre ($objeto) {
+    $nombre = $objeto->nombre . " " . $objeto->apellido;
+    return $nombre;
 }

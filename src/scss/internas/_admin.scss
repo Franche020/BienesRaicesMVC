@@ -48,3 +48,19 @@ table.propiedades{
     color: $blanco;
     text-align: center;
 }
+
+.botones-admin{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    & a:last-of-type{
+        grid-column: 4/5;
+    }
+}
+.botones-admin__blog {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 20rem;
+
+}

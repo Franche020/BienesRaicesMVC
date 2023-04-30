@@ -121,6 +121,9 @@ class PropiedadController  {
 
                 // Insertar en la base de datos
                 $resultado = $propiedad->guardar();
+                if ($resultado) {
+                    header('location: /admin?resultado=2');
+                }
             }    
         }
         $router->render('/propiedades/actualizar', [
@@ -141,7 +144,11 @@ class PropiedadController  {
             if ( $id ) {
                 if ( validarTipoDato($_POST['tipo']) ){
                     $propiedad = Propiedad::find($id);
-                    $propiedad->eliminar();
+                    $resultado = $propiedad->eliminar();
+                    
+                    if ($resultado){
+                        header('location: /admin?resultado=3');
+                    }
 
                 }
             }

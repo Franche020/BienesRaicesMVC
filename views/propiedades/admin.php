@@ -3,7 +3,6 @@
     <h1>Administrador de bienes raíces</h1>
 
     <?php 
-
     if($resultado){
         $mensaje = mostrarNotificacion(intval($resultado));
         if($mensaje) { ?> 
@@ -13,9 +12,11 @@
     } ?>
  
     
-
+    <div class="botones-admin">
     <a class="boton-verde" href ="/propiedades/crear">Nueva Propiedad</a>
     <a class="boton-amarillo" href ="/vendedores/crear">Nuevo Vendedor</a>
+    <a class="boton-verde alinear-derecha" href ="/blog/admin">Administracion del Blog</a>
+    </div>
 
     <h2>Propiedades</h2>
 

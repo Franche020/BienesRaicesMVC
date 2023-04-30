@@ -18,7 +18,10 @@ class VendedorController{
             $errores = $vendedor->validar();
         
             if(empty($errores)) {
-                $vendedor->guardar();   
+                $resultado = $vendedor->guardar();   
+                if ($resultado){
+                    header('location: /admin?resultado=1');
+                }
             }
         }
 
@@ -46,7 +49,10 @@ class VendedorController{
             $errores = $vendedor->validar();
         
             if(empty($errores)) {
-                $vendedor->guardar();
+                $resultado = $vendedor->guardar();
+                if ($resultado){
+                    header('location: /admin?resultado=2');
+                }
             }
         }
 
@@ -68,7 +74,11 @@ class VendedorController{
                 $tipo = $_POST['tipo'];
                 if (validarTipoDato($tipo)){
                     $vendedor = Vendedor::find($id);
-                    $vendedor->eliminar();
+                    $resultado = $vendedor->eliminar();
+
+                    if ($resultado){
+                        header('location: /admin?resultado=3');
+                    }
                 }
             }
         }
