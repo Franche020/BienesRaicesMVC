@@ -42,10 +42,10 @@ if (!isset($inicio)){
               <a href="/blog">Blog</a>
               <a href="/contacto">Contacto</a>
               <?php if(!$auth): ?>
-              <a  href="/login.php">Login</a>
+              <a  href="/login">Login</a>
             <?php else: ?>
               <a href="/admin">Administrar</a>
-              <a href="/cerrar-sesion">Cerrar Sesión</a>
+              <a href="/logout">Cerrar Sesión</a>
             <?php endif; ?>
               
             </nav>
