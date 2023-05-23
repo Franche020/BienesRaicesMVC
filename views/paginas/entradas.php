@@ -1,7 +1,7 @@
 <?php foreach($entradas as $entrada) { ?>
           <article class="entrada-blog">
           <div class="imagen">
-              <a href="entrada">
+              <a href="entrada?id=<?php echo $entrada->id;?>">
                   <picture>
                       <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen ?>" alt="Texto Entrada blog">
                   </picture>

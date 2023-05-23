@@ -1,7 +1,7 @@
 <h1>contacto</h1>
 <main class="contenedor seccion">
   
-  <?php if ($mensaje) { ?>
+  <?php if (isset($mensaje)) { ?>
     <p class="alerta exito"> <?php echo $mensaje?> </p>';
   <?php } ?>
 

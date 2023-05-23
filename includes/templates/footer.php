@@ -12,17 +12,17 @@ $auth = $_SESSION['login'] ?? false
       <div class="contenedor contenedor-footer">
         <nav class="navegacion">
           <div>
-            <a href="/nosotros.html">Nosotros</a>
-            <a href="/anuncios.html">Anuncios</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/contacto.html">Contacto</a>
+            <a href="/nosotros">Nosotros</a>
+            <a href="/anuncios">Anuncios</a>
+            <a href="/blog">Blog</a>
+            <a href="/contacto">Contacto</a>
           </div>
           <div class="login">
             <?php if(!$auth): ?>
-              <a  href="/login.php">Login</a>
+              <a  href="/login">Login</a>
             <?php else: ?>
-              <a href="/admin/index.php">Administrar</a>
-              <a href="/cerrar-sesion.php">Cerrar Sesión</a>
+              <a href="/admin/index">Administrar</a>
+              <a href="/cerrar-sesion">Cerrar Sesión</a>
             <?php endif; ?>
           </div>
         </nav>

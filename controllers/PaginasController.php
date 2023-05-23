@@ -61,11 +61,11 @@ class PaginasController {
         ]);
     }
     public static function contacto(Router $router){
+        $mensaje = null;
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             
             $respuestas = $_POST['contacto'];
-            $mensaje = null;
 
 
             // Crear una instancia de PHPMail
